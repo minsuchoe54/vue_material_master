@@ -9,8 +9,8 @@
     <div class="shadow-lg card">
       <div class="pt-3 pb-0 bg-transparent card-header">
         <div class="float-start">
-          <h5 class="mt-3 mb-0">Material UI Configurator</h5>
-          <p>See our dashboard options.</p>
+          <h5 class="mt-3 mb-0">관리자 테마설정</h5>
+          
         </div>
         <div class="mt-4 float-end" @click="toggle">
           <button class="p-0 btn btn-link text-dark fixed-plugin-close-button">
@@ -23,7 +23,7 @@
       <div class="pt-0 card-body pt-sm-3">
         <!-- Sidebar Backgrounds -->
         <div>
-          <h6 class="mb-0">Sidebar Colors</h6>
+          <h6 class="mb-0">사이드바 색상</h6>
         </div>
         <a href="#" class="switch-trigger background-color">
           <div
@@ -64,8 +64,8 @@
         </a>
         <!-- Sidenav Type -->
         <div class="mt-3">
-          <h6 class="mb-0">Sidenav Type</h6>
-          <p class="text-sm">Choose between 2 different sidenav types.</p>
+          <h6 class="mb-0">사이드바 배경</h6>
+          <!-- <p class="text-sm">Choose between 2 different sidenav types.</p> -->
         </div>
         <div class="d-flex">
           <button
@@ -112,7 +112,7 @@
         </div>
         <hr class="horizontal dark my-sm-4" />
 
-        <a
+        <!-- <a
           class="btn btn-outline-dark w-100"
           href="https://www.creative-tim.com/learning-lab/vue/overview/material-dashboard/"
           >View documentation</a
@@ -133,7 +133,7 @@
           >
             <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
           </a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-4 col-xl-3 col-md-6 mb-xl-0">
+  <div class="mb-4 col-xl-3 col-md-6 mb-xl-0 mt-5">
     <div class="card card-blog card-plain">
       <div class="card-header p-0 mt-n4 mx-3">
         <a class="shadow-xl d-block border-radius-xl">
@@ -7,25 +7,20 @@
             :src="image"
             alt="img-blur-shadow"
             class="shadow img-fluid border-radius-xl"
+            id="jb-wrap img"
           />
         </a>
       </div>
       <div class="p-3 card-body">
-        <p class="mb-0 text-sm text-gradient text-dark">{{ label }}</p>
         <a href="javascript:;">
           <h5>{{ title }}</h5>
         </a>
+        <p class="mb-2 text-sm text-gradient text-dark">{{ label }}</p>
         <p class="mb-4 text-sm">
           {{ description }}
         </p>
         <div class="d-flex align-items-center justify-content-between">
-          <button
-            type="button"
-            class="mb-0 btn btn-sm"
-            :class="`btn-outline-${action.color}`"
-          >
-            {{ action.label }}
-          </button>
+          <button type="button" class="mb-0 btn btn-sm btn-outline-success" v-on:click="openModalFn('data')"> 수정</button>
           <div class="mt-2 avatar-group">
             <a
               v-for="({ image: authorImage, name }, index) of authors"
@@ -43,11 +38,16 @@
       </div>
     </div>
   </div>
+  <ModalForManager ref="myListModalRef"></ModalForManager>
 </template>
 
 <script>
+import ModalForManager from "./ModalForManager.vue";
 export default {
   name: "DefaultProjectCard",
+  components:{
+    ModalForManager
+  },
   props: {
     image: {
       type: String,
@@ -79,5 +79,18 @@ export default {
       default: () => [],
     },
   },
+  methods:{
+    openModalFn(argv) {
+        this.$refs.myListModalRef.openModalFnSet(argv);
+    },
+  }
 };
 </script>
+<style scoped>
+
+#jb-wrap img {
+
+  filter: brightness(30%);
+}
+
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white">
-    <div class="container top-0 position-sticky z-index-sticky">
+    <!-- <div class="container top-0 position-sticky z-index-sticky">
       <div class="row">
         <div class="col-12">
           <navbar
@@ -10,7 +10,7 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
     <main class="mt-0 main-content">
       <section>
         <div class="page-header min-vh-100">
@@ -34,9 +34,9 @@
               >
                 <div class="card card-plain">
                   <div class="pb-0 card-header bg-transparent mb-4">
-                    <h4 class="font-weight-bolder">Sign In</h4>
+                    <h4 class="font-weight-bolder">Sign Up</h4>
                     <p class="mb-0">
-                      Enter your email and password to register
+                      Enter your id and password to register
                     </p>
                   </div>
                   <div class="card-body">
@@ -45,20 +45,22 @@
                         <material-input
                           id="name"
                           type="text"
-                          label="Name"
+                          label="Id"
                           name="name"
                           size="lg"
                         />
                       </div>
+                     
                       <div class="mb-3">
                         <material-input
-                          id="email"
-                          type="email"
-                          label="Email"
-                          name="email"
+                          id="password"
+                          type="password"
+                          label="Password"
+                          name="password"
                           size="lg"
                         />
                       </div>
+                     
                       <div class="mb-3">
                         <material-input
                           id="password"
@@ -73,11 +75,11 @@
                         class="font-weight-light"
                         checked
                       >
-                        I agree the
+                        비밀번호 분실시 
                         <a
-                          href="../../../pages/privacy.html"
+                          
                           class="text-dark font-weight-bolder"
-                          >Terms and Conditions</a
+                          >복구불가</a
                         >
                       </material-checkbox>
                       <div class="text-center">
@@ -94,11 +96,11 @@
                   </div>
                   <div class="px-1 pt-0 text-center card-footer px-lg-2">
                     <p class="mx-auto mb-4 text-sm">
-                      Don't have an account?
+                      계정이 있으신가요?
                       <router-link
                         :to="{ name: 'SignIn' }"
                         class="text-success text-gradient font-weight-bold"
-                        >Sign In</router-link
+                        >로그인</router-link
                       >
                     </p>
                   </div>
@@ -113,7 +115,7 @@
 </template>
 
 <script>
-import Navbar from "@/examples/PageLayout/Navbar.vue";
+// import Navbar from "@/examples/PageLayout/Navbar.vue";
 import MaterialInput from "@/components/MaterialInput.vue";
 import MaterialCheckbox from "@/components/MaterialCheckbox.vue";
 import MaterialButton from "@/components/MaterialButton.vue";
@@ -123,7 +125,7 @@ import { mapMutations } from "vuex";
 export default {
   name: "sign-up",
   components: {
-    Navbar,
+    // Navbar,
     MaterialInput,
     MaterialCheckbox,
     MaterialButton,

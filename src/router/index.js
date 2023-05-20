@@ -54,6 +54,46 @@ const routes = [
     name: "SignUp",
     component: SignUp,
   },
+  {
+    path: "/info",
+    name: "Info",
+    component: () => import('../views/Info.vue')
+  },
+  {
+    path: "/info/:id",
+    name: "Profile",
+    component: () => import('../views/Profile.vue')
+  },
+  {
+    path: "/board",
+    name: "Board",
+    component: () => import('../views/Board.vue')
+  },
+  // {
+  //   path: "/profile/:id",
+  //   name: "Info",
+  //   component: () => import('../views/Info.vue')
+  // },
+  {
+    path: "/infotarget",
+    name: "Infotarget",
+    component: () => import('../views/Infotarget.vue')
+  },
+  {
+    path: "/infocomment",
+    name: "Infocomment",
+    component: () => import('../views/Infocomment.vue')
+  },
+  {
+    path: "/infophoto",
+    name: "Infophoto",
+    component: () => import('../views/Infophoto.vue')
+  },
+  {
+    path: "/bothistory",
+    name: "Bothistory",
+    component: () => import('../views/Bothistory.vue')
+  },
 ];
 
 const router = createRouter({

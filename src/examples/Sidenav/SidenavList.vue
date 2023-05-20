@@ -9,7 +9,7 @@
           url="#"
           :aria-controls="''"
           v-bind:collapse="false"
-          collapseRef="dashboard"
+          collapseRef="../dashboard"
           navText="Dashboard"
         >
           <template v-slot:icon>
@@ -17,6 +17,86 @@
           </template>
         </sidenav-collapse>
       </li>
+      <li class="nav-item">
+        <sidenav-collapse
+          url="#"
+          :aria-controls="''"
+          v-bind:collapse="false"
+          collapseRef="../info"
+          navText="업소관리"
+        >
+          <template v-slot:icon>
+            <i class="material-icons-round opacity-10 fs-5">info</i>
+          </template>
+        </sidenav-collapse>
+      </li>
+      <li class="nav-item">
+        <sidenav-collapse
+          url="#"
+          :aria-controls="''"
+          v-bind:collapse="false"
+          collapseRef="../infotarget"
+          navText="업소타겟"
+        >
+          <template v-slot:icon>
+            <i class="material-icons-round opacity-10 fs-5">table_view</i>
+          </template>
+        </sidenav-collapse>
+      </li>
+      <li class="nav-item">
+        <sidenav-collapse
+          url="#"
+          :aria-controls="''"
+          v-bind:collapse="false"
+          collapseRef="../infocomment"
+          navText="댓글관리"
+        >
+          <template v-slot:icon>
+            <i class="material-icons-round opacity-10 fs-5">receipt_long</i>
+          </template>
+        </sidenav-collapse>
+      </li>
+      <li class="nav-item">
+        <sidenav-collapse
+          url="#"
+          :aria-controls="''"
+          v-bind:collapse="false"
+          collapseRef="../infophoto"
+          navText="사진관리"
+        >
+          <template v-slot:icon>
+            <i class="material-icons-round opacity-10 fs-5">assignment</i>
+          </template>
+        </sidenav-collapse>
+      </li>
+      <li class="nav-item">
+        <sidenav-collapse
+          url="#"
+          :aria-controls="''"
+          v-bind:collapse="false"
+          collapseRef="../bothistory"
+          navText="봇관리"
+        >
+          <template v-slot:icon>
+            <i class="material-icons-round opacity-10 fs-5">info</i>
+          </template>
+        </sidenav-collapse>
+      </li>
+      <li class="nav-item">
+        <sidenav-collapse
+          url="#"
+          :aria-controls="''"
+          v-bind:collapse="false"
+          collapseRef="../board"
+          navText="게시판"
+        >
+          <template v-slot:icon>
+            <i class="material-icons-round opacity-10 fs-5">assignment</i>
+          </template>
+        </sidenav-collapse>
+      </li>
+      
+      
       <li class="nav-item">
         <sidenav-collapse
           url="#"
@@ -43,21 +123,7 @@
           </template>
         </sidenav-collapse>
       </li>
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="rtl-page"
-          navText="Rtl"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5"
-              >format_textdirection_r_to_l</i
-            >
-          </template>
-        </sidenav-collapse>
-      </li>
+     
       <li class="nav-item">
         <sidenav-collapse
           url="#"
@@ -118,14 +184,28 @@
           </template>
         </sidenav-collapse>
       </li>
+      <li class="nav-item">
+        <sidenav-collapse
+          :aria-controls="''"
+          v-bind:collapse="false"
+          collapseRef="sign-in"
+          navText="Logout"
+          @click="logout"
+        >
+        <template v-slot:icon>
+            <i class="material-icons-round opacity-10 fs-5">logout</i>
+          </template>
+        </sidenav-collapse>
+      </li>
     </ul>
     <div class="sidenav-footer position-absolute w-100 bottom-0">
       <div class="mx-3">
         <a
           class="btn mt-4 w-100"
-          :class="`bg-gradient-${this.$store.state.color}`"
-          href="https://www.creative-tim.com/product/vue-material-dashboard-2-pro"
-          >Upgrade to pro</a
+          :class="`bg-gradient-info`"
+          href="https://t.me/opmap114"
+          target="_blank"
+          >관리자 텔레그램</a
         >
       </div>
     </div>
@@ -133,7 +213,7 @@
 </template>
 <script>
 import SidenavCollapse from "./SidenavCollapse.vue";
-
+import { useCookies } from "vue3-cookies";
 export default {
   name: "SidenavList",
   props: {
@@ -148,6 +228,15 @@ export default {
   },
   components: {
     SidenavCollapse
+  },
+  methods:{
+    logout(){
+      const { cookies } = useCookies();
+      cookies.remove('accessToken');
+      this.$store.state.userData = null;
+      this.$store.state.token = null;
+      this.$router.push('/sign-in')
+    }
   }
 };
 </script>

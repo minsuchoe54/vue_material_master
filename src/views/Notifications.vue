@@ -134,7 +134,7 @@
         </div>
       </div>
     </div>
-    <div class="position-fixed bottom-1 end-1 z-index-2">
+    <div class="position-fixed top-1 end-1 z-index-2">
       <material-snackbar
         v-if="snackbar === 'success'"
         title="Material Dashboard"
@@ -165,12 +165,13 @@
       <material-snackbar
         v-if="snackbar === 'danger'"
         title="Material Dashboard"
-        date="11 mins ago"
+        date="1 seconds ago"
         description="Hello, world! This is a notification message."
         :icon="{ component: 'campaign', color: 'white' }"
         color="danger"
         :close-handler="closeSnackbar"
       />
+      
     </div>
   </div>
 </template>
