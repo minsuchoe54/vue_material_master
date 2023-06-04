@@ -14,6 +14,7 @@ appInstance.use(store);
 appInstance.use(router);
 appInstance.use(MaterialDashboard);
 appInstance.use(VueGoodTablePlugin);
+
 appInstance.use(VueGoogleMaps, {
     load: {
         key: 'AIzaSyAulvu_rbYShYhVwIvCaUOLMgD_PXBss3g',

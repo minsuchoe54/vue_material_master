@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="modal5" tabindex="-1">
+    <div class="modal fade" id="modal1" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg modal-fullscreen-lg-down">
             <div v-if="detailData" class="modal-content">
                 <div class="modal-header p-2">
@@ -25,37 +25,25 @@
                         <span>지도를 움직여서 주변의 업소를 찾으세요</span>
                         <br />
                         <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
-                        <span>내 위치와 업종필터로 빠르게 검색하세요</span>
+        
                     </div>
                     <div class="text-center my-3 my-font-b7">
-                        <span v-on:click="$store.commit('modalTypeFn', 0)" v-bind:class="$store.state.modalType == 0 ? 'my-font-theme' : 'my-font-gray'" class="my-cursor"
-                            ><font-awesome-icon :icon="['far', 'image']" size="lg" class="me-1" /><span v-bind:class="$store.state.modalType == 0 ? '' : 'my-font-gray'">업소정보</span></span
+                        <span v-on:click="modalType=0" v-bind:class="modalType == 0 ? 'my-font-theme' : 'my-font-gray'" class="my-cursor"
+                            ><font-awesome-icon :icon="['far', 'image']" size="lg" class="me-1" /><span v-bind:class="modalType == 0 ? '' : 'my-font-gray'">업소정보</span></span
                         >
                         <span class="mx-2"></span>
-                        <span v-on:click="$store.commit('modalTypeFn', 1)" v-bind:class="$store.state.modalType == 1 ? 'my-font-theme' : 'my-font-gray'" class="my-cursor"
-                            ><font-awesome-icon :icon="['fas', 'comment-dots']" size="lg" class="me-1" /><span v-bind:class="$store.state.modalType == 1 ? '' : 'my-font-gray'">후기보기</span></span
+                        <span v-on:click="modalType=1" v-bind:class="modalType == 1 ? 'my-font-theme' : 'my-font-gray'" class="my-cursor"
+                            ><font-awesome-icon :icon="['fas', 'comment-dots']" size="lg" class="me-1" /><span v-bind:class="modalType == 1 ? '' : 'my-font-gray'">후기보기</span></span
                         >
                     </div>
                     <hr class="my-hr" />
                     <div class="mt-3">
-                        <img src="/public/image/banner.webp" class="w-100" />
+                        <!-- <img src="/public/image/banner.webp" class="w-100" /> -->
                        
                     </div>
                     <!-- 모달본문 공통 종료-->
                     <!-- 모달본문 타입1 -->
+                    <div v-html="detailData.content_1"></div>
                     <div v-if="$store.state.modalType == 0 && detailData2" class="px-0 pb-3 mb-5">
                         <div v-html="detailData2.content.replace(/<img/gi, `${styleImg}`).replace(/<p/gi, `${styleText}`).replace(/<h1/gi, `${styleText}`)"></div>
                         <div class="mt-4">
@@ -69,6 +57,7 @@
                     </div>
                     <!-- 모달본문 타입2 종료 -->
                 </div>
+                
                 <div class="scroll-to-top">
                     <span v-on:click="scrollToTopFn()" class="my-cursor"><font-awesome-icon :icon="['far', 'arrow-alt-circle-up']" size="2x" /></span>
                 </div>
@@ -101,7 +90,8 @@ export default {
     data() {
         return {
             // 모달 변수
-            openModal5: null,
+            modalType : 0,
+            openModal: null,
             // 데이터 변수
             detailData: null,
             detailData2: null,
@@ -114,7 +104,7 @@ export default {
     },
     methods: {
         createModal5Fn() {
-            this.openModal5 = new Modal(document.getElementById("modal5"));
+            this.openModal = new Modal(document.getElementById("modal1"));
         },
         openModalFnSet(argv) {
             this.openModal5Fn();
@@ -123,12 +113,12 @@ export default {
             // this.visitDetailFn(argv);
         },
         openModal5Fn() {
-            this.openModal5.show();
+            this.openModal.show();
             history.pushState(null, null, location.href);
             window.onpopstate = () => {
-                this.openModal5.hide();
+                this.openModal.hide();
             };
-            document.getElementById("modal5").addEventListener("hidden.bs.modal", () => {
+            document.getElementById("modal1").addEventListener("hidden.bs.modal", () => {
                 this.$store.commit("modalTypeFn", 0);
                 window.onpopstate = () => {
                     this.$router.push("/");

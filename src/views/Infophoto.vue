@@ -46,7 +46,6 @@
                 
             </template>
             <template #selected-row-actions>
-             
                 <button @click="ChangeTypeManager('main')">main</button>
                 <button @click="ChangeTypeManager('manager')">manager</button>
                 <button @click="ChangeTypeManager('course')">course</button>

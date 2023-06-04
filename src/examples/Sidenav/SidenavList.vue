@@ -35,7 +35,7 @@
           url="#"
           :aria-controls="''"
           v-bind:collapse="false"
-          collapseRef="../infotarget"
+          collapseRef="../target"
           navText="업소타겟"
         >
           <template v-slot:icon>
@@ -87,8 +87,22 @@
           url="#"
           :aria-controls="''"
           v-bind:collapse="false"
-          collapseRef="../board"
-          navText="게시판"
+          collapseRef="../payment"
+          navText="정산"
+        >
+          <template v-slot:icon>
+            <i class="material-icons-round opacity-10 fs-5">payment</i>
+          </template>
+        </sidenav-collapse>
+      </li>
+
+      <li class="nav-item">
+        <sidenav-collapse
+          url="#"
+          :aria-controls="''"
+          v-bind:collapse="false"
+          collapseRef="../blog"
+          navText="블로그"
         >
           <template v-slot:icon>
             <i class="material-icons-round opacity-10 fs-5">assignment</i>
@@ -97,46 +111,7 @@
       </li>
       
       
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="tables"
-          navText="Tables"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">table_view</i>
-          </template>
-        </sidenav-collapse>
-      </li>
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="billing"
-          navText="Billing"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">receipt_long</i>
-          </template>
-        </sidenav-collapse>
-      </li>
-     
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="notifications"
-          navText="Notifications"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">notifications</i>
-          </template>
-        </sidenav-collapse>
-      </li>
+   
       <li class="mt-3 nav-item">
         <h6
           class="text-xs ps-4 text-uppercase font-weight-bolder text-white"
@@ -145,45 +120,7 @@
           ACCOUNT PAGES
         </h6>
       </li>
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="profile"
-          navText="Profile"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">person</i>
-          </template>
-        </sidenav-collapse>
-      </li>
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="sign-in"
-          navText="SignIn"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">login</i>
-          </template>
-        </sidenav-collapse>
-      </li>
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="sign-up"
-          navText="SignUp"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">assignment</i>
-          </template>
-        </sidenav-collapse>
-      </li>
+
       <li class="nav-item">
         <sidenav-collapse
           :aria-controls="''"

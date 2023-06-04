@@ -78,20 +78,17 @@
                 <div class="p-2" style="width:70%;">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="my-font-08">
-                            <span  class="badge bg-warning me-1">UP</span>
+                            <span  class="badge bg-warning me-1" >UP</span>
                             <span class="badge bg-danger me-1">HOT</span>     
                             
                         </div>
-                        <div class="my-font-09" style="margin-left: auto;">
+                        <div class="my-font-09" style="margin-left: auto;" v-on:click="openModalPreview(info_data)">
                           
                           <svg class="svg-inline--fa fa-up-right-from-square fa-lg my-font-theme" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="up-right-from-square" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:18px;color:#ff385c;float: right;cursor:pointer;"><path class="" fill="currentColor" d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"></path></svg>
                           
                         </div>
                         <div class="my-font-09">
-                            <span
-                                v-on:click="openModalFn('list')"
-                                class="my-cursor"
-                            >
+                            <span class="my-cursor">
                                 <font-awesome-icon :icon="['fas', 'external-link-alt']" size="lg" class="my-font-theme" />
                             </span>
                         </div>
@@ -235,7 +232,7 @@
               <textarea v-model="info_data.content_1" rows="27"></textarea>
               <div class="d-flex justify-content-center">
                 <sync-loader class="d-flex justify-content-center" :loading="loading" :color="color" :size="size" v-if="save_script_loader"></sync-loader>
-                <button class="btn btn-success btn-lg mt-3" @click="SaveScript" v-else>프로필게시</button>
+                <button class="btn btn-success btn-lg mt-3" @click="savephoto(this.info_photos)" v-else>프로필게시</button>
               </div>
               
             </div>
@@ -280,18 +277,7 @@
             <div class="d-flex content-justify-start">
               <h6 class="mb-1 mx-3">Managers</h6>
               <h6 class="mb-1">휴무</h6>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="show" v-model="info_data.photo_activate_show_type">
-                <label class="form-check-label" for="inlineRadio1">노출</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="noshow" v-model="info_data.photo_activate_show_type">
-                <label class="form-check-label" for="inlineRadio2">미노출</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="dark" v-model="info_data.photo_activate_show_type">
-                <label class="form-check-label" for="inlineRadio3" >어둡게</label>
-              </div>
+              
              
             </div>
        
@@ -348,6 +334,7 @@
                           >
                         휴무
                       </material-switch>
+                      
                         <button type="button" class="mb-0 btn btn-sm btn-outline-success" v-on:click="openModalFn(list)"> 수정</button>
                         <button type="button" class="mb-0 btn btn-sm btn-outline-danger" v-on:click="deletephoto(list.id)"> 삭제</button>
                        
@@ -431,9 +418,21 @@
             </div>
           </div>
           <div class="mb-5 ps-3 text-center">
-         
+            <span class="mt-1">휴무</span>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="show" v-model="info_data.photo_activate_show_type">
+                <label class="form-check-label" for="inlineRadio1">노출</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="noshow" v-model="info_data.photo_activate_show_type">
+                <label class="form-check-label" for="inlineRadio2">미노출</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="dark" v-model="info_data.photo_activate_show_type">
+                <label class="form-check-label" for="inlineRadio3" >어둡게</label>
+              </div>
             <sync-loader class="d-flex justify-content-center" :loading="loading" :color="color" :size="size" v-if="save_manager_activate_loader"></sync-loader>
-            <button class="btn btn-lg mb-0 bg-success my-2 mb-2 text-white mx-2" @click="SaveManagerActivate" v-else>프로필게시</button>
+            <button class="btn btn-lg mb-0 bg-success my-2 mb-2 text-white mx-2" @click="savephoto(this.info_photos)" v-else>프로필게시</button>
             <button class="btn btn-lg mb-0 bg-danger my-2 mb-2 text-white" v-if="manager_more" @click="manager_more=false">접기</button>
             <button class="btn btn-lg mb-0 bg-warning my-2 mb-2 text-white" v-else @click="manager_more=true"> + 더보기</button>
           </div>
@@ -455,8 +454,8 @@ import setNavPills from "@/assets/js/nav-pills.js";
 import setTooltip from "@/assets/js/tooltip.js";
 import axios from 'axios';
 import ProfileDrag from './components/ProfileDrag.vue'
-import ModalForManager from "./components/ModalForManager.vue";
-import ModalForPreview from "./components/ModalForPreview.vue";
+import ModalForManager from "./modals/ModalForManager.vue";
+import ModalForPreview from "./modals/ModalForPreview.vue";
 import Map from './components/Map.vue'
 // import { AtomSpinner } from 'epic-spinners'
 // import { HalfCircleSpinner } from "epic-spinners"
@@ -513,56 +512,10 @@ export default {
 
   
   methods: {
-    SaveManagerActivate(){
-        this.save_manager_activate_loader = true
-        let count = 0;
-        let content = ''
-    
-        this.manager_data.forEach(element => {
-          let data = {'data':{activate:element.activate}}
-          let param = '/api/info-photos/'+element.id
-          console.log(element.id)
-          console.log(element)
-          if(this.info_data.photo_activate_show_type=='show'){
-            content = content+'<img src="'+element.webp_img+'" style="width:100%;">'
-          }else if(this.info_data.photo_activate_show_type=='noshow'){
-              if(element.type=='manager' &&element.activate==false){
-                console.log('pass')
-              }else{
-                content = content+'<img src="'+element.webp_img+'" style="width:100%;">'
-              }
-          }else if(this.info_data.photo_activate_show_type=='dark'){
-            if(element.type=='manager' &&element.activate==false){
-              content = content+'<img src="'+element.webp_img+'" style="width:100%; filter:brightness(35%);">'
-              }else{
-                content = content+'<img src="'+element.webp_img+'" style="width:100%;">'
-              }
-          }
-          axios.put(this.$store.state.API_URL+param, data, {headers: {Authorization: "Bearer "+this.$store.state.token}})
-          .then(async response=>{
-            if(response.status==200){
-              let photos_index = this.info_photos.findIndex((x) => x.id == element.id);
-              this.info_photos[photos_index].activate = element.activate
-              count = count + 1
-              if(count == this.manager_data.length){
-                let param = '/api/infos/'+this.info_data.id
-                let data = {'data':{photo_activate_show_type:this.info_data.photo_activate_show_type,content_1:content}}
-                await axios.put(this.$store.state.API_URL+param, data, {headers: {Authorization: "Bearer "+this.$store.state.token}})
-                .then(res=>{
-                  this.info_data.content_1 = res.data.data.attributes.content_1
-                  this.save_manager_activate_loader = false
-                  this.manager_more = false
-              })
-              }
-            
-            }
-          })
-      })
-      // console.log(this.manager_data)
-    },
     savephoto(photos){
+      this.save_manager_activate_loader = true
       let count = 0;
-      let content = ''
+      let content = '<p style="text-align:center;">'
       this.info_photos = photos
       this.manager_data = []
       this.info_photos.forEach((element,index)=>{
@@ -580,19 +533,19 @@ export default {
 
 
         if(this.info_data.photo_activate_show_type=='show'){
-          content = content+'<img src="'+element.attributes.webp_img+'" style="width:100%;">'
+          content = content+'<img src="'+element.attributes.webp_img+'" style="width:800px;">'
         }else if(this.info_data.photo_activate_show_type=='noshow'){
 
             if(element.attributes.type=='manager' &&element.attributes.activate==false){
               // pass
             }else{
-              content = content+'<img src="'+element.attributes.webp_img+'" style="width:100%;">'
+              content = content+'<img src="'+element.attributes.webp_img+'" style="width:800px;">'
             }
         }else if(this.info_data.photo_activate_show_type=='dark'){
           if(element.attributes.type=='manager' &&element.attributes.activate==false){
-            content = content+'<img src="'+element.attributes.webp_img+'" style="width:100%; filter:brightness(35%);">'
+            content = content+'<img src="'+element.attributes.webp_img+'" style="width:800px; filter:brightness(15%);">'
             }else{
-              content = content+'<img src="'+element.attributes.webp_img+'" style="width:100%;">'
+              content = content+'<img src="'+element.attributes.webp_img+'" style="width:800px;">'
             }
         }
         await axios.put(this.$store.state.API_URL+param, data, {headers: {Authorization: "Bearer "+this.$store.state.token}})
@@ -601,10 +554,13 @@ export default {
             count = count+1
             if(count==this.info_photos.length){
               let param = '/api/infos/'+this.info_data.id
+              content = content+'</p>'
               let data = {'data':{photo_activate_show_type:this.info_data.photo_activate_show_type,content_1:content}}
               await axios.put(this.$store.state.API_URL+param, data, {headers: {Authorization: "Bearer "+this.$store.state.token}})
               .then(res=>{
                 this.info_data.content_1 = res.data.data.attributes.content_1
+                this.save_manager_activate_loader = false
+                this.manager_more = false
                 alert('성공')
 
               })
@@ -717,8 +673,7 @@ export default {
         this.$refs.myListModalRef.openModalFnSet(argv);
     },
     openModalPreview(argv){
-        this.$refs.myPreviewModalRef.openModalFnSet(argv);
-        
+        this.$refs.myPreviewModalRef.openModalFnSet(argv);  
     },
     LineupChange(index){
      

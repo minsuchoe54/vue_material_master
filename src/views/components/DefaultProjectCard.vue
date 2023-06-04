@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import ModalForManager from "./ModalForManager.vue";
+import ModalForManager from "../modals/ModalForManager.vue";
 export default {
   name: "DefaultProjectCard",
   components:{

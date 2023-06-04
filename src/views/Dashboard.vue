@@ -250,6 +250,7 @@ import team1 from "@/assets/img/team-1.jpg";
 import team2 from "@/assets/img/team-2.jpg";
 import team3 from "@/assets/img/team-3.jpg";
 import team4 from "@/assets/img/team-4.jpg";
+import { useCookies } from "vue3-cookies";
 export default {
   name: "dashboard-default",
   data() {
@@ -275,5 +276,18 @@ export default {
     TimelineList,
     TimelineItem,
   },
+  methods:{
+    setUp(){
+      const { cookies } = useCookies();
+      const token = cookies.get('accessToken');
+      this.$store.state.token = token
+      if(token==null){
+        this.$router.push('/sign-in')
+      }
+    }
+  },
+  mounted(){
+    this.setUp()
+  }
 };
 </script>

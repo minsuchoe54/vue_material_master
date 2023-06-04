@@ -20,7 +20,9 @@ export default createStore({
       "position-sticky blur shadow-blur left-auto top-1 z-index-sticky px-0 mx-4",
     absolute: "position-absolute px-4 mx-0 w-100 z-index-2",
     API_URL : 'https://op.cc-oo.club',
+    KAKAO_KEY : '7e1bcb3dbb55c595cf007050b354675a',
     token : null,
+    
     
   },
   mutations: {

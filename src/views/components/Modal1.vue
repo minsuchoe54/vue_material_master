@@ -5,10 +5,10 @@
                 <div class="modal-header p-2">
                     <!-- 모달헤더 -->
                     <div class="my-font-b7">
-                        <a v-bind:href="`tel:${detailData.phone}`" v-on:click="eventCallFn(detailData.id)" class="contact-store me-1"
+                        <!-- <a v-bind:href="`tel:${detailData.phone}`" v-on:click="eventCallFn(detailData.id)" class="contact-store me-1"
                             ><font-awesome-icon :icon="['fas', 'square-phone']" size="lg"
                         /></a>
-                        <a v-bind:href="`tel:${detailData.phone}`" v-on:click="eventCallFn(detailData.id)" class="my-font-gray me-2">{{ detailData.phone }}</a>
+                        <a v-bind:href="`tel:${detailData.phone}`" v-on:click="eventCallFn(detailData.id)" class="my-font-gray me-2">{{ detailData.phone }}</a> -->
                         
                     </div>
                     <a href="#" onclick="return false;" class="my-font-gray" data-bs-dismiss="modal"><font-awesome-icon :icon="['fas', 'times']" size="lg" /></a>
@@ -19,7 +19,7 @@
                     
                     <!-- 모달본문 타입2 종료 -->
                    
-                    <div class="text-center my-3 my-font-b7">
+                    <!-- <div class="text-center my-3 my-font-b7">
                         <span v-on:click="this.modalType=0" v-bind:class="modalType == 0 ? 'my-font-theme' : 'my-font-gray'" class="my-cursor"
                             ><font-awesome-icon :icon="['far', 'image']" size="lg" class="me-1" /><span v-bind:class="modalType == 0 ? '' : 'my-font-gray'">기본정보</span></span
                         >
@@ -27,7 +27,7 @@
                         <span v-on:click="this.modalType=1" v-bind:class="modalType == 1 ? 'my-font-theme' : 'my-font-gray'" class="my-cursor"
                             ><font-awesome-icon :icon="['fas', 'comment-dots']" size="lg" class="me-1" /><span v-bind:class="modalType == 1 ? '' : 'my-font-gray'">후기보기</span></span
                         >
-                    </div>
+                    </div> -->
                     <div v-if="modalType == 0" class="px-0 pb-3 mb-5">
                         <div>
                             <div class="mx-4 mt-3">

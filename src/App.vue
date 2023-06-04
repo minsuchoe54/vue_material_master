@@ -43,6 +43,7 @@ import Navbar from "@/examples/Navbars/Navbar.vue";
 import AppFooter from "@/examples/Footer.vue";
 import { mapMutations, mapState } from "vuex";
 import  {useCookies}  from "vue3-cookies";
+
 export default {
   name: "App",
   components: {
@@ -232,5 +233,18 @@ export default {
     height: 100%;
     border-radius: 1rem 0 0 1rem;
     background-color: #222;
+}
+.my-spinner-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(34, 34, 34, 0.8);
+    z-index: 9999;
+}
+.my-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 </style>

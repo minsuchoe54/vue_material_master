@@ -27,7 +27,6 @@ export default {
         };
         //초기 에러방지
         let position = {}
-        console.log(props.lat)
         position['lat'] = Number(props.lat) ?  Number(props.lat) : 36.725394;
         position['lng'] = Number(props.lon) ?  Number(props.lon) : 128.350154;
     
@@ -46,7 +45,7 @@ export default {
                         position: position,
                         map,
                     });
-                    marker.setDraggable(true);
+                    marker.setDraggable(false);
                     map.addListener("click", (event) => {
                         console.log(event.latLng)
                         marker.setPosition(event.latLng);
