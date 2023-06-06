@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-3 d-flex justify-content-start">
-            <VueDatePicker v-model="date"></VueDatePicker>
+            <VueDatePicker v-model="date" locale="kr" ></VueDatePicker>
             <button class="btn btn-info btn-xs" style="width:90px;" @click="loadItems">검색</button>
         </div>
     </div>
@@ -31,10 +31,6 @@
         <button class="btn btn-primary btn-md mx-1 font-weight-bold text-xs" @click="SelectTitle('RESTORE')" v-if="select_title=='RESTORE' ">복구된업소 <span class="badge bg-light text-dark">{{ select_count_obj.RESTORE }}</span></button>
         <button class="btn btn-info btn-md mx-1 font-weight-bold text-xs" @click="SelectTitle('RESTORE')" v-else>복구된업소 <span class="badge bg-light text-dark">{{ select_count_obj.RESTORE }}</span></button>
 
-
-  
-        
-                
     </div>
     
     <vue-good-table
@@ -64,7 +60,7 @@
         <template #table-row="props">
           
             <span v-if="props.column.field == 'title'" >
-                <input type="text" :value="props.row.title" style="width:100%" v-if="props.row.activate==true" class="bg-success" disabled>
+                <input type="text" :value="props.row.title" style="width:100%" v-if="props.row.status==true" class="bg-success" disabled>
                 <input type="text" :value="props.row.title" style="width:100%" v-else >
             </span>
             <span v-if="props.column.field == 'info'" >
@@ -282,6 +278,12 @@ export default {
         },
         SelectTitle(title){
             this.select_title = title
+            if(title==null){
+                this.serverParams.columnFilters = {}
+            }else{
+                this.serverParams.columnFilters.title = title
+            }
+            
             this.loadItems()
             
         },
@@ -388,46 +390,26 @@ export default {
         },
         loadItems() {
                 this.isLoading = true
-                if(this.select_title==null){
-                    this.getFromServer(this.serverParams).then(response => {
-                        this.rows = []
-                        response.data.data.forEach(element => {
-                            this.rows.push({
-                                id:element.id,
-                                name:element.attributes.name,
-                                storetype:element.attributes.storetype,
-                                phone:element.attributes.phone,
-                                adress:element.attributes.adress,
-                                info:element.attributes.info,
-                                info_target:element.attributes.info_target,
-                                title:element.attributes.title,
-                                activate:element.attributes.activate,
-                                createdAt:element.attributes.createdAt,
-                                
-                            })
+                this.getFromServer(this.serverParams).then(response => {
+                    this.rows = []
+                    response.data.data.forEach(element => {
+                        this.rows.push({
+                            id:element.id,
+                            name:element.attributes.name,
+                            storetype:element.attributes.storetype,
+                            phone:element.attributes.phone,
+                            adress:element.attributes.adress,
+                            info:element.attributes.info,
+                            info_target:element.attributes.info_target,
+                            title:element.attributes.title,
+                            activate:element.attributes.activate,
+                            createdAt:element.attributes.createdAt,
+                            
                         })
-                        this.isLoading = false;
-                    });
-                }else{
-                    this.getFromTitle(this.serverParams).then(response => {
-                        this.rows = []
-                        response.data.data.forEach(element => {
-                            this.rows.push({
-                                id:element.id,
-                                name:element.attributes.name,
-                                storetype:element.attributes.storetype,
-                                phone:element.attributes.phone,
-                                adress:element.attributes.adress,
-                                info:element.attributes.info,
-                                info_target:element.attributes.info_target,
-                                title:element.attributes.title,
-                                activate:element.attributes.activate,
-                                
-                            })
-                        })
-                        this.isLoading = false;
-                    });
-                }
+                    })
+                    this.isLoading = false;
+                });
+               
                 
         }
         },
