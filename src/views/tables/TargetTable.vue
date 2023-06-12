@@ -1,12 +1,12 @@
 <template>
   <button class="btn btn-primary mx-1" @click="SelectSite(0)" v-if="select_site_id==0">전체</button>
   <button class="btn btn-success mx-1" @click="SelectSite(0)" v-else>전체</button>
+
+  
   <template v-for="list,index in default_sites" :key="index">
     <button class="btn btn-primary mx-1" @click="SelectSite(list.id)" v-if="select_site_id==list.id">{{ list.name }}</button>
     <button class="btn btn-success mx-1" @click="SelectSite(list.id)" v-else>{{ list.name }}</button>
   </template>
-
-
     <vue-good-table
       mode="remote"
       v-on:page-change="onPageChange"

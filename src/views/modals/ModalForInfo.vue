@@ -50,28 +50,7 @@
                     <!-- 모달헤더 종료 -->
                 </div>
                 <div class="modal-body my-h100 px-0 pt-0" id="scroll-to-top">
-                    <!-- 모달본문 공통 -->
-                    <div class="position-fixed top-13 end-10 z-index-2" style="margin: auto;width: 50%;padding: 10px;">
-                        <material-snackbar
-                            v-if="snackbar === 'success'"
-                            title="saved"
-                            date="1 seconds ago"
-                            description="저장되었습니다"
-                            :icon="{ component: 'campaign', color: 'white' }"
-                            color="success"
-                            :close-handler="closeSnackbar"
-                        />
-                        <material-snackbar
-                            v-if="snackbar === 'danger'"
-                            title="delete"
-                            date="1 seconds ago"
-                            description="삭제되었습니다"
-                            :icon="{ component: 'campaign', color: 'white' }"
-                            color="danger"
-                            :close-handler="closeSnackbar"
-                        />
-                      
-                    </div>
+                  
                     <hr class="my-hr" />
                     <div class="mt-3">
                         <!-- 업소정보 -->
@@ -150,7 +129,7 @@ import { faChartBar } from "@fortawesome/free-regular-svg-icons/faChartBar";
 import { faMoneyBill1 } from "@fortawesome/free-regular-svg-icons/faMoneyBill1";
 import { faAddressCard } from "@fortawesome/free-regular-svg-icons/faAddressCard";
 import { faCloudscale } from "@fortawesome/free-brands-svg-icons/faCloudscale";
-import MaterialSnackbar from "@/components/MaterialSnackbar.vue";
+
 
 import InfoCard from '../components/InfoCard'
 import Map from '../components/Map'
@@ -168,7 +147,7 @@ export default {
     name: "ListModal",
     components: {
         FontAwesomeIcon,
-        MaterialSnackbar,
+   
         InfoCard,
         Map,
 
@@ -188,15 +167,13 @@ export default {
             loader : true,
             openModal : null,
             infoData : null,
-            snackbar : null,
+          
 
 
         };
     },
     methods: {
-        closeSnackbar(){
-            this.snackbar = null;
-        },
+       
         async SaveMap(){ //SaveInfo 도 같이함
             // console.log(this.infoData)
             await axios.get('https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x='+this.infoData.data.attributes.lon+'&y='+this.infoData.data.attributes.lat,{headers:{Authorization:'KakaoAK '+this.$store.state.KAKAO_KEY}})
@@ -223,7 +200,7 @@ export default {
             await axios.put(this.$store.state.API_URL+param,data, {headers: {Authorization: "Bearer "+this.$store.state.token}} )
             .then(res=>{
                 if(res.status==200){
-                    this.snackbar = 'success'
+                    alert('success')
                 }
 
             })
@@ -235,7 +212,7 @@ export default {
             .then(res=>{
                 if(res.status==200){
                     this.infoData.data.attributes.info_targets.data.push(res.data.data)
-                    this.snackbar = 'success'
+                    alert('success')
                 }
             })
         },
@@ -248,7 +225,7 @@ export default {
             .then(res=>{
                 if(res.status==200){
                     console.log(datas.attributes)
-                    this.snackbar = 'success'
+                    alert('success')
                     // let index = this.infoData.data.attributes.info_targets.data.findIndex((x) => x.id == datas.id);
                     // this.infoData.data.attributes.info_targets.data[index] = res.attributes
                     // console.log(index)
@@ -265,7 +242,7 @@ export default {
                 let index = this.infoData.data.attributes.info_targets.data.findIndex((x) => x.id == id);
                 if(res.status==200){
                     this.infoData.data.attributes.info_targets.data.splice(index,1)
-                    this.snackbar = 'danger'
+                    alert('success')
                 }
             })
         },
