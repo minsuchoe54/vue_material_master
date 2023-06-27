@@ -291,6 +291,7 @@ export default {
             data.forEach(async element=>{ 
                 let update_data = {}
                 let titles = element.title.trim().split(' ')
+                // NEW_INFO
                 if(titles.includes('NEW_INFO')){
                     let latlon = element.latlon
                     if(latlon==undefined){
@@ -299,7 +300,6 @@ export default {
                         let param = '/api/bot-histories/'+element.id+'?[fields][0]=content&[fields][1]=idx&[fields][2]=url&[fields][3]=adress&populate[info_target_default][fields][0]=id'
                         await axios.get(this.$store.state.API_URL+param,{headers: {Authorization: "Bearer "+this.$store.state.token}})
                         .then(async response1=>{
-                            // console.log(response1)
                             if(response1.status==200){
                                 let lat = latlon.split(',')[0].trim()
                                 let lon = latlon.split(',')[1].trim()
@@ -350,7 +350,9 @@ export default {
                     }
                     
                 }
+                
                 else if(titles.includes('NEW_TARGET')){
+                    // NEW_TARGET
                     let data = {'data':{
                         name : element.name,
                         storetype : element.storetype,
